@@ -49,23 +49,23 @@ callback=dict.prettyPrint',
     },
 
     _printDef: function (def) {
-        console.log(util.format('%s /%s/', def.pos, def.phoneticText));
+        console.log(chalk.underline.yellow('%s') + ' /%s/', def.pos, def.phoneticText);
         def.meanings.forEach(dict._printMeaning);
     },
 
     _printMeaning: function (meaning, index) {
-        var meaningFormat = '    %d. %s',
+        var meaningFormat = chalk.red('    %d. %s'),
             exampleFormat = '       "%s"',
-            synonymFormat = '       synonyms: %s';
+            synonymFormat = chalk.blue('       synonyms: ') + chalk.cyan('%s');
 
         // Meaning
-        console.log(util.format(meaningFormat, index+1, meaning.meaning));
+        console.log(meaningFormat, index+1, meaning.meaning);
         // Examples
-        meaning.examples && meaning.examples.forEach(function (eg) { console.log(util.format(exampleFormat, eg)); });
+        meaning.examples && meaning.examples.forEach(function (eg) { console.log(exampleFormat, eg); });
         // Synonyms
-        meaning.synonyms && console.log(util.format(
+        meaning.synonyms && console.log(
             synonymFormat,
-            meaning.synonyms.map(function (current) { return current.nym; }).join(', ')));
+            meaning.synonyms.map(function (current) { return current.nym; }).join(', '));
     }
 };
 
