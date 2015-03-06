@@ -1,0 +1,25 @@
+{
+  "name": "defineword",
+  "version": "1.0.0",
+  "description": "A commnad line utility which looks up a word in Google Dictionary.",
+  "main": "define.js",
+  "scripts": {
+    "test": "node index.js test"
+  },
+  "keywords": [
+    "command",
+    "dictionary",
+    "english"
+  ],
+  "author": "minchnew",
+  "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/minchnew/defineword.git"
+  },
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "commander": "^2.6.0",
+    "request": "^2.53.0"
+  }
+}
