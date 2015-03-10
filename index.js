@@ -3,7 +3,8 @@
 var program = require('commander'),
     request = require('request'),
     chalk = require('chalk'),
-    util = require('util');
+    util = require('util'),
+    corrector = require('./corrector');
 
 program
     .version('1.0.0')
@@ -40,8 +41,7 @@ callback=dict.prettyPrint',
 
     prettyPrint: function (entry) {
         if (!entry.data) {
-            // TODO: suggestions like 'Did you mean: define ...'
-            console.log('Can not find word: ' + this.word);
+            console.log(chalk.red('Did you mean:') +' %s', corrector.correct(this.word));
         } else {
             var defs = entry.data[0].dictionary.definitionData;
             defs.forEach(dict._printDef);
