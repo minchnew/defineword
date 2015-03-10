@@ -36,7 +36,10 @@ callback=dict.prettyPrint',
     },
 
     error: function (err) {
-        console.error(err);
+        if (err.code === 'ECONNREFUSED')
+            console.log(chalk.red('Google is blocked somehow. Find a solution yourself.'));
+        else
+            console.error(err);
     },
 
     prettyPrint: function (entry) {
